@@ -1,12 +1,17 @@
 { packages }:
 
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
 
 let
   cfg = config.programs.rusty-git-mob;
-  gitMob = packages.${pkgs.system}.default;
+  gitMob = packages.${pkgs.stdenv.hostPlatform.system}.default;
 in
 {
   options.programs.rusty-git-mob = {
